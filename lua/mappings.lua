@@ -27,3 +27,7 @@ map("n", "<leader>l", function()
     end,
   })
 end, { desc = "Compilar LaTeX" })
+
+-- Fechar terminal com Ctrl + H
+vim.keymap.set("t", "<C-h>", [[<C-\><C-n>:bd!<CR>]], { desc = "Fechar terminal" })
+vim.keymap.set("n", "<C-h>", ":bd!<CR>", { desc = "Fechar buffer (terminal)" })
