@@ -8,27 +8,35 @@ return {
     end,
   },
 
-  -- Mason (instalador de LSPs/DAPs/formatters)
   {
     "williamboman/mason.nvim",
-    opts = {},
+    opts = {
+      ensure_installed = {
+        "lua-language-server",
+        "pyright",
+        "intelephense",
+        "css-lsp",
+        "html-lsp",
+        "typescript-language-server",
+        "jinja-lsp",
+        "stylua",
+      },
+    },
   },
 
-  -- Ponte Mason -> lspconfig (faz lspconfig achar os binários do Mason)
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
     opts = {
       automatic_installation = false,
+      automatic_enable = false,
     },
   },
 
-  -- LSPConfig
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "williamboman/mason-lspconfig.nvim" },
-    --config = function()
-    --require "configs.lspconfig"
-    --end,
+    config = function()
+      require "configs.lspconfig"
+    end,
   },
 }
